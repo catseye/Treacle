@@ -8,16 +8,16 @@ Introduction
 ------------
 
 Treacle is a programming language based on an extended form of
-term-rewriting which we shall call, somewhat innacurately (or at least
-arbitrarily,) *context rewriting*.
+term-rewriting which we shall call, somewhat inaccurately (or at least
+arbitrarily,) _context rewriting_.
 
-Like Arboretuum, its successor built around *forest-rewriting*, Treacle
+Like Arboretuum, its successor built around _forest-rewriting_, Treacle
 was intended as a language for specifying compilers. Treacle is somewhat
 more successful at pulling it off, however; context rewriting
 encompasses, and is more expressive than, forest-rewriting.
 
 Context rewriting is meant to refer to the fact that Treacle's rewriting
-patterns may contain holes – designated "containers" for subpatterns
+patterns may contain _holes_ – designated "containers" for subpatterns
 which may match not just the *immediate* child of the term which the
 parent pattern matched (as in conventional term-rewriting) but also *any
 one of that child's descendents*, no matter how deeply nested.
@@ -31,20 +31,20 @@ kind of search operator which explicitly encodes search order into each
 pattern.
 
 Context rewriting also deconstructs the conventional concept of the
-variable, splitting it into a name and a wildcard. Any pattern or
+variable, splitting it into a _name_ and a _wildcard_. Any pattern or
 subpattern may be named, not just wildcards. Even holes may be named. At
 the same time, wildcards, which match arbitrary terms, may occur
 unnamed. Upon a successful match, only those terms which matched named
 patterns are recorded in the unifier.
 
-Further, each rule in Treacle may contain multiple terms (replacements)
+Further, each rule in Treacle may contain multiple terms (_replacements_)
 on the right-hand side of a rewriting rule, and each of these may have
-its own name. When the term undergoing rewriting (called the subject) is
+its own name. When the term undergoing rewriting (called the _subject_) is
 rewritten, each named replacement is substituted into the subject at the
 position matched by the part of the pattern that is labelled by that
 same name.
 
-Lastly, replacements may contain special atomic terms called newrefs.
+Lastly, replacements may contain special atomic terms called _newrefs_.
 When a newref is written into the subject, it takes the form of a new,
 unique symbol, guaranteed (or at least reasonably assumed) to be
 different from all other symbols that are in, or could be in, the
@@ -83,7 +83,7 @@ Examples
 
 Now we are ready to give some examples.
 
-### Patterns
+### Patterns ###
 
 -   The pattern `(a b (? X *))` matches `(a b (c (d b)))`, with the
     unifier `X=(c (d b))`. Also, `(a (? Y *) (c (d (? Y *))))` matches
@@ -111,7 +111,7 @@ Now we are ready to give some examples.
     search the contents of the 3rd subterm, for whatever the 2nd subterm
     is.
 
-### Rules
+### Rules ###
 
 -   Say we have a rule where the pattern is `(a b (:i (? X (d b))))`,
     and the lone replacement is `X : a`. This rule would match the
@@ -194,7 +194,7 @@ you have to "keep all your state together": if there are multiple pieces
 of information in the tree of terms that relate to the reduction you
 want to accomplish, they have to be in a bounded distance from, and in a
 fixed relationship with, each other. If some piece is far away, it will
-have to be brought – *literally* brought! – to bear on the situation, by
+have to be brought to bear on the situation – *literally* brought, by
 moving it through the tree through successive "bubbling" rewrites.
 
 Forest-rewriting eases this by having multiple independent trees: some
