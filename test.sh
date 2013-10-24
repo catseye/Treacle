@@ -1,7 +1,8 @@
 #!/bin/sh
 
 cd src
-plt-r5rs tests.scm | tee test-output.txt
+plt-r5rs tests.scm > test-output.txt || exit 1
+cat test-output.txt
 if grep -q FAILED test-output.txt; then
     echo "FAILED"
     rm test-output.txt
