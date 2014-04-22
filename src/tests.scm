@@ -37,7 +37,7 @@
 
 (test pattern-1
   (mk-named 'jim (mk-wildcard))
-  #(named jim #(wildcard))
+  '#(named jim #(wildcard))
 )
 
 (test pattern-2
@@ -229,7 +229,7 @@
 (test match-order-1
   (toplevel-match
     '(thing (flag (world (a b c) (a b (flag k)))) thang)
-    #(hole innermost #(named jim (flag #(wildcard))))
+    '#(hole innermost #(named jim (flag #(wildcard))))
   )
   '((jim 1 1 2 2))
 )
@@ -237,7 +237,7 @@
 (test match-order-2
   (toplevel-match
     '(thing (flag (world (a b c) (a b (flag k)))) thang)
-    #(hole outermost #(named jim (flag #(wildcard))))
+    '#(hole outermost #(named jim (flag #(wildcard))))
   )
   '((jim 1))
 )
@@ -255,7 +255,7 @@
 (test apply-rule-1
   (apply-rule
     '(a b c)
-    #(named jim (a b c))
+    '#(named jim (a b c))
     '((jim . k) (bones 1 2 3))
     0
   )
@@ -331,7 +331,7 @@
 
 (test syntax-term-4
   (term-atom *)
-  #(wildcard)
+  '#(wildcard)
 )
 
 (test syntax-term-5

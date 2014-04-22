@@ -1,7 +1,9 @@
 #!/bin/sh
 
 cd src
-huski tests.scm > test-output.txt || exit 1
+csi -b tests.scm > test-output.txt || exit 1
+#huski tests.scm > test-output.txt || exit 1
+#plt-r5rs tests.scm > test-output.txt || exit 1
 cat test-output.txt
 if grep -q FAILED test-output.txt; then
     echo "FAILED"
